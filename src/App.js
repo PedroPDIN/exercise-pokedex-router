@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 import './App.css';
 /* import pokemons from './data';
 import Pokedex from './Pokedex'; */
@@ -13,7 +13,15 @@ function App() {
       <div className="App">
         <Route exact path='/' component={Home} />
         <Route path='/about' component={About} />
-        <Route path='/users' component={Users} />
+        <Route path='/users/:id' render={(props) => 
+        <Users {...props} greetingsMessage='Good Morning'/>}/>
+
+        <ul>
+          <li><Link to='/'>Home</Link></li>
+          <li><Link to='/about'>About</Link></li>
+          <li><Link to='/users'>Users</Link></li>
+        </ul>
+
       </div>
     </BrowserRouter>
   );
